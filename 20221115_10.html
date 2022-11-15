@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     * 문자 찾기
+     * 한 개의 문자열을 입력받고, 특정 문자를 입력받아
+     * 해당 특정 문자가 입력받은 문자열에 몇 개 존재하는지 알아내는
+     * 프로그램을 작성하세요.
+     * 문자열의 길이는 100을 넘지 않습니다.
+     * 첫줄에 문자열, 두번째 줄에 문자가 주어진다.
+     * 첫 줄에 해당 문자의 갯수를 출력
+    */
+
+    function solution(str, value) {
+      // 1.
+      // return str.split('').filter(m => m === value).length;
+      
+      // 3. 위의 1번보다 반복문을 한번 덜 돌게 되므로 성능에 더 좋음.
+      // - 마지막에 해당하는 문자가 들어와도 split으로 인해 빈문자열이 들어가므로 문제없음
+      return str.split(value).length - 1;
+
+      // 2.
+      // let answer = 0;
+      // for (let x of str) {
+      //   if (x === value) answer++;
+      // }
+
+      // return answer;
+    }
+    
+    const str = 'COMPUTERPROGRAMMING';
+    const value = 'R';
+    console.log('solution', solution(str, value));
+  </script>
+</body>
+</html>
