@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     * 가운데 문자 출력
+     * 소문자로 된 단어가 입력되면 그 단어의 가운데 문자를 출력
+     * 단 단어의 길이가 짝수일 경우 가운데 2개의 문자 출력
+     */
+
+    function solution(str) {
+      // 1.
+      let halfLengthIndex = Math.ceil(str.length / 2) - 1;
+      let sliceNum = str.length % 2 === 0 ? 2 : 1;
+      return str.slice(halfLengthIndex, halfLengthIndex + sliceNum);
+    }
+    
+    const str = 'study';
+    console.log('solution', solution(str));
+  </script>
+</body>
+</html>
