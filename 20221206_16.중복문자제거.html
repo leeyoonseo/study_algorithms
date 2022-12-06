@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  /**
+   * 소문자로 된 한개의 문자열이 입력되면 
+   * 중복된 문자를 제거하고 출력하는 프로그램을 작성하세요.
+   * 제거된 문자열의 각 문자는 원래 문자열의 순서를 유지합니다.
+   * */
+function solution(str) {
+
+  // 1.
+  // const temp = str.split('');
+  // let answer = temp[0];
+
+  // for (let i = 0; i < str.length; i ++) {
+  //   if (!answer.includes(temp[i])) {
+  //     answer += temp[i];
+  //   }
+  // }
+ 
+  // return answer;
+
+  // 2.
+  // let answer = '';
+  // for (let i = 0; i < str.length; i ++) {
+  //   if (i === str.indexOf(str[i])) {
+  //     answer += str[i];
+  //   }
+  // }
+  // return answer;
+
+  // etc: 동일한 문자 갯수
+  let answer = '';
+  let pos = str.indexOf('k');
+
+  while(pos !== -1) {
+    answer++;
+    pos = str.indexOf('k', pos + 1);
+  }
+  return answer;
+}
+
+const str = 'ksekkset';
+console.log('solution', solution(str));
+</script>
+</body>
+</html>
