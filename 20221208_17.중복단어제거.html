@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  /**
+   * n개의 문자열이 입력되면 중복된 문자열 제거
+   * */
+function solution(arr) {
+  // 1.
+  // const answer = [];
+  // for(let i = 0; i < arr.length; i++) {
+  //   if (i === arr.indexOf(arr[i])) {
+  //     answer.push(arr[i]);
+  //   }
+  // }
+  // return answer;
+
+  // 2.
+  return arr.filter((a, i) => {
+    return arr.indexOf(a) === i;
+  });
+}
+
+const arr = ['5', 'good', 'time', 'good', 'time'];
+console.log('solution', solution(arr));
+</script>
+</body>
+</html>
