@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  /**
+   * OX 문제는 맞거나 틀린 두 경우의 답을 가지는 문제를 말한다.
+   * 여러개의 OX 문제로 만들어진 시험에서 연속적으로 답을 맞히는 경우 가산점을 주기위해
+   * 다음과 같이 점수 계산을 한다.
+   * 1번 문제가 맞는 경우 1점
+   * 앞의 문제에 대해서 답을 틀리다가 답이 맞는 처음 문제는 1점
+   * 연속 문제 답이 맞을 경우 두번째는 2점 세번째는 3점.. K번째는 K점으로 계산
+   * 틀린 문제는 0점
+   * */
+function solution(correct) {
+  let score = 0;
+  let combo = 0;
+
+  for (let x of correct) {
+    if (x === 1) {
+      combo ++;
+      score += combo;
+    } else {
+      combo = 0;
+    }
+  }
+  return score;
+
+  // 중복..
+  // let score = correct[0]; 
+  // let combo = correct[0]; // 1
+ 
+  // for(let i = 1; i < correct.length; i++) {
+  //   if (correct[i] === 1) {
+  //     if (correct[i - 1] === 1) {
+  //       combo++;
+  //       score += combo;
+  //     } else {
+  //       combo = 1;
+  //       score++;
+  //     }
+  //   } else {
+  //     combo = 0;
+  //   }
+  // }
+  // return score;
+} 
+
+const correct = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+console.log('solution', solution(correct));
+</script>
+</body>
+</html>
