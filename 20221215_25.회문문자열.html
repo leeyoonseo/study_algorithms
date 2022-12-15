@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  /**
+   * 앞에서 읽을때나 뒤에서 읽을때나
+   * 같은 문자열을 회문 문자열이라고 한다
+   * 문자열이 입력되면 해당 문자열이 회문 문자열이면 YES
+   * 회문 문자열이 아니면 NO 출력하는 프로그램 작성
+   * 단, 대소문자 구문은 안함
+   * */
+function solution(str) {
+  // 2.
+  const lowerStr = str.toLowerCase();
+  const reversStr = Array.from(lowerStr).reverse().join('');
+  return lowerStr === reversStr ? 'YES' : 'NO';
+
+  // 1.
+  // const n = str.length;
+  // const arr = Array.from(str.toLowerCase());
+
+  // if (arr.length % 2 !== 0) return 'NO';
+  // for (let i = 0; i < n/2; i++) {
+  //   if (arr[i] !== arr[arr.length - i - 1]) return 'NO';
+  // }
+  
+  // return 'YES';
+} 
+
+const str = 'goddoG';
+console.log('solution', solution(str));
+</script>
+</body>
+</html>
