@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  /**
+   * N * N 격자판
+   * 각 격자에는 그 지역의 높이가 쓰여있다.
+   * 각 격자판의 숫자 중 자신의 상하좌우 숫자보다
+   * 큰 숫자는 봉우리 지역
+   * 봉우리 지역이 몇개 있는지 알아내어라.
+   * 가장자리는 0으로 초기화
+   * */
+function solution(arr) {
+  // 2.
+  let answer = 0;
+  let n = arr.length;
+  let dx = [-1, 0, 1, 0];
+  let dy = [0, 1, 0, -1];
+
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      let flag = 1;
+
+      for (let k = 0; k < 4; k++) {
+        let nx = i + dx[k]; // 행 좌표
+        let ny = i + dy[k]; // 열 좌표
+        let current = arr[i][j];
+
+        
+        let isHasX = nx >= 0 && nx < n;
+        let isHasY = ny >= 0 && ny < n;
+        if (isHasX && isHasY && arr[nx][ny] >= current) { // 하나라도 큰게 발견될 경우 반복 돌지 않음
+          flag = 0;
+          break;
+        }
+      }
+
+      if (flat) answer++;
+    }
+  }
+
+  return answer;
+
+
+  // 1.
+  // let answer = 0;
+  // let n = arr.length;
+  // let left = 0;
+  // let right = 0;
+  // let top = 0;
+  // let bottom = 0;
+  // let current = 0;
+
+  // for (let i = 0; i < n; i++) {
+  //   for (let j = 0; j < n; j++) {
+  //     left = arr[i][j - 1] || 0;
+  //     right = arr[i][j + 1] || 0;
+  //     top = arr[i - 1]?.[j] || 0;
+  //     bottom = arr[i + 1]?.[j] || 0;
+  //     current = arr[i][j];
+
+  //     const max = Math.max(left, right, top, bottom, current);
+      
+  //     if (max === current) {
+  //       answer++;
+  //     }
+  //   }  
+
+  //   // reset
+  //   left = 0;
+  //   right = 0;
+  //   top = 0;
+  //   bottom = 0;
+  //   current = 0;
+  // }
+
+  // return answer;
+} 
+
+const arr = [
+  [5, 3, 7, 2, 3],
+  [3, 7, 1, 6, 1],
+  [7, 2, 5, 3, 4],
+  [4, 3, 6, 4, 1],
+  [8, 7, 3, 5, 2],
+];
+console.log('solution', solution(arr));
+</script>
+</body>
+</html>
