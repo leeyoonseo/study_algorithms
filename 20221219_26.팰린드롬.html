@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  /**
+   * 회문문자(25번 참고) = 팰린드롬
+   * */
+function solution(str) {
+  let answer = 'YES';
+  let s = str.toLowerCase().replace(/[^a-z]/g, '');
+  let reverseS = s.split('').reverse().join('');
+
+  if (s !== reverseS) return 'NO';
+
+  return answer;
+} 
+
+const str = 'found7, time: study; Yduts; emit, 7Dnuof';
+console.log('solution', solution(str));
+</script>
+</body>
+</html>
