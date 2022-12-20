@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  /**
+   * 가장 짧은 문자거리
+   * 한개의 문자열 s와 문자 t가 주어지면
+   * 문자열 s의 각 문자가 문자 t와 떨어진
+   * 최소거리를 출력
+   * */
+// 1.
+// function utils (s) {
+//   let answer = [];
+//   let Empty = 1000;
+
+//   for (let i = 0; i < s.length; i++) {
+//     if (s[i] === t) {
+//       answer.push(0);
+//     } else {
+//       if (i === s.length - 1) {
+//         answer.push(Empty);
+//       } else {
+//         for (let j = i; j < s.length; j++) {
+//           if (s[j] === t) {
+//             answer.push(j - i);
+//             break;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   return answer;
+// }
+
+// function solution(s, t) {
+//   const reverseS = s.split('').reverse().join('');
+//   const str = utils(s);
+//   const reverseStr = utils(reverseS).reverse();
+
+//   const answer = str.map((s, i) => {
+//     return Math.min(s, reverseStr[i]);
+//   });
+
+//   return answer;
+// } 
+
+function solution(s, t) {
+  let answer = [];
+  let p = 1000;
+
+  for (let x of s) {
+    if (x === t) {
+      p = 0;
+      answer.push(p);
+    } else {
+      p++;
+      answer.push(p);
+    }
+  }
+
+  // 뒤에서부터 반복
+  p = 1000;
+  for (let i = s.length - 1; i >= 0; i--) {
+    if (s[i] === t) {
+      p = 0;
+    } else {
+      p++;
+      answer[i] = Math.min(answer[i], p);
+    }
+  }
+
+  return answer;
+} 
+
+const s = 'teachermode';
+const t = 'e';
+console.log('solution', solution(s, t));
+</script>
+</body>
+</html>
