@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  /**
+   * 알파벳 대문자로 이루어진 문자열을 입력받아
+   * 같은 문자가 연속으로 반복되는 경우
+   * 반복되는 문자 바로 오른쪽에 반복횟수를 
+   * 표기하는 방법으로 문자열을 압축하는 프로그램을 
+   * 작성하시오.
+   * 단 반복횟수가 1인 경우 생략
+   * */
+
+function solution(s) {
+  // 3.
+  let answer = '';
+  let count = 1;
+  let str = s + ' '; // ?
+
+  for (let i = 0; i < s.length; i++) {
+    if (str[i] === str[i + 1]) {
+      count++;
+    } else {
+      answer += count > 1 ? s[i] + count : s[i];
+      count = 1;
+    }
+  }
+  return answer;
+
+  // 2.
+  // let answer = '';
+  // let count = 1;
+
+  // for (let i = 0; i < s.length; i++) {
+  //   if (s[i] === s[i + 1]) {
+  //     count++;
+  //   } else {
+  //     answer += count > 1 ? s[i] + count : s[i];
+  //     count = 1;
+  //   }
+  // }
+
+  // return answer;
+  
+  // 1.
+  // let answer = [];
+  // let count = [];
+
+  // for (let i = 0; i < s.length; i++) {
+  //   if (answer[answer.length - 1] === s[i]) {
+  //     count[count.length - 1] = count[count.length - 1] + 1;
+  //   } else {
+  //     answer.push(s[i]);
+  //     count.push(1);
+  //   }
+  // }
+
+  // return answer.map((a, i) => count[i] > 1 ? a + count[i] : a).join('');
+} 
+const s = 'KKHSSSSSSSE'; // K2HS7E
+console.log('solution', solution(s));
+</script>
+</body>
+</html>
