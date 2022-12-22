@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  /**
+   * N개의 자연수가 입력되면 각 자연수의 자릿수의 합을 구하고
+   * 그 합이 최대인 자연수를 출력하는 프로그램을 작성
+   * 자릿수의 합이 같은 경우 원래 숫자가 큰 숫자를 답으로 한다
+   * 만약 235와 1234가 동시에 답이 될 수 있다면 1234를 답으로 출력
+   * */
+
+function solution(arr) {
+  // 3.
+  let answer = Number.MIN_SAFE_INTEGER;
+  let max = Number.MIN_SAFE_INTEGER;
+
+  for (let x of arr) {
+    let sum = x.toString().split('').reduce((acc, cur) => Number(acc) + Number(cur));
+    if (sum > max) {
+      max = sum;
+      answer = x;
+    } else if (sum === max && x > answer) {
+      answer = x;
+    }
+  }
+
+  return answer;
+
+  // 2 .
+  // let answer = Number.MIN_SAFE_INTEGER;
+  // let max = Number.MIN_SAFE_INTEGER;
+
+  // for (let x of arr) {
+  //   let sum = 0;
+  //   let tmp = x;
+
+  //   while(tmp) {
+  //     sum += tmp % 10;
+  //     tmp = Math.floor(tmp / 10);
+  //   }
+
+  //   if (sum > max) {
+  //     max = sum;
+  //     answer = x;
+  //   } else if (sum === max && x > answer) {
+  //     answer = x;
+  //   }
+  // }
+
+  // return answer;
+
+  // 1.
+  // let maxIndex = 0;
+  // let maxValue = 0;
+  // let sum = null;
+
+  // for (let i = 0; i < arr.length; i++) {
+  //   sum = String(arr[i]).split('').reduce((acc, cur) => Number(acc) + Number(cur));
+  //   if (sum > maxValue) {
+  //     maxIndex = i;
+  //     maxValue = sum;
+  //   } else if (sum === maxValue && Number(arr[i]) > Number(arr[maxIndex])) {
+  //     maxIndex = i;
+  //     maxValue = arr[i]
+  //   }
+  // }
+
+  // return arr[maxIndex];
+} 
+const arr = [128, 460, 603, 40, 521, 137, 123]; // 137
+console.log('solution', solution(arr));
+</script>
+</body>
+</html>
