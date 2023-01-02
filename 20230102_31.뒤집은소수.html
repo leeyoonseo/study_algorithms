@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+  /**
+   * N개의 자연수가 입력되면 각 자연수를 뒤집은 후 그 뒤집은 수가 소수이면
+   * 그 소수를 출력하는 프로그램을 작성하세요.
+   * 예를 들어 32를 뒤집으면 23이고, 23은 소수입니다.
+   * 그러면 23을 출력한다.
+   * 단 910을 뒤집으면 19로 숫자화 해야한다. 첫 자리부터 연속된 0은 무시한다.
+   * */
+
+  // 1.
+  // function solution(arr) {
+  //   let answer = arr.map(a => {
+  //     const resultStr = String(a).split('').reverse().join('');
+  //     return Number(resultStr);
+  //   });
+
+  //   return answer.filter(a => isPrime(a));
+  // } 
+
+  // 3.
+  function solution(arr) {
+    let answer = [];
+
+    for (let x of arr) {
+      let result = x.toString().split('').reverse().join('');
+      result = Number(result);
+
+      if (isPrime(result)) answer.push(result);
+    }
+
+    return answer;
+  } 
+
+  // 2.
+  // function solution(arr) {
+  //   let answer = [];
+
+  //   for (let x of arr) {
+  //     let result = 0;
+
+  //     // 예제: x = 307
+  //     while (x) {
+  //       // 1. x가 0이 아니므로 다시 반복
+  //       // let t = x % 10; // 307 % 10 = 7
+  //       // result = result * 10 + t; // 0 * 10 + 7 = 7
+  //       // x = parseInt(x / 10); // 307 / 10 = 30
+
+  //       // 2. x는 30으로 시작, x가 0이 아니므로 다시 반복
+  //       // let t = x % 10; // 30 % 10 = 0
+  //       // result = result * 10 + t; // 7 * 10 + 0 = 70
+  //       // x = parseInt(x / 10); // 30 / 10 = 3
+
+  //       // 3. x는 3으로 시작
+  //       let t = x % 10; // 3 % 10 = 3
+  //       result = result * 10 + t; // 70 * 10 + 3 = 703
+  //       x = parseInt(x / 10); // 3 / 10 = 0
+  //     }
+
+  //     if (isPrime(result)) {
+  //       answer.push(result);
+  //     }
+  //   }
+
+  //   return answer;
+  // } 
+
+  function isPrime(n) {
+    // 1은 소수가 아님
+    if (n === 1) {
+      return false;
+    }
+    
+    // 1.
+    // 넘어온 숫자 전까지 반복
+    // 15 일때 2~14 약수가 있으면 소수가 아니다. (1과 자기자신이 있는 것이 소수이기에)
+    // for (let i = 2; i < n; i++) {
+    //   if (n % i === 0) {
+    //     return false;
+    //   }
+    // }
+
+    // 2. 조금 더 반복을 줄이기 위해서 개선.. -> 절반까지만 봐도 가능
+    // 어떤 숫자든지 1과 자기자신을 제외하고 약수의 가장 큰 것은 그 숫자의 절반이기 때문에. (제곱근까지만 봐도 됨)
+    // for (let i = 2; i <= parseInt(n / 2); i++) {
+    // Math.sqrt() 함수는 숫자의 제곱근을 반환합니다.
+    for (let i = 2; i <= parseInt(Math.sqrt(n)); i++) {
+      if (n % i === 0) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  const arr = [32, 55, 62, 20, 250, 370, 200, 30, 100]; // 23, 2, 73, 2, 3
+  console.log('solution', solution(arr));
+</script>
+</body>
+</html>
